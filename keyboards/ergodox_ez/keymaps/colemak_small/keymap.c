@@ -272,7 +272,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      | bbg  |mcl   |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | ion  | the  | and  |      |------|           |------|      |      |      |      |      |        |
+ * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -340,13 +340,11 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
           break;
         case 4:
           if (record->event.pressed) {
-            return MACRO( D(LSFT), T(M), U(LSFT), T(C), D(LSFT), T(L), U(LSFT),  T(O), T(U), T(G), T(H), T(L), T(I), T(N), END  ); // 
               SEND_STRING("McLoughlin");
           }
           break;
         case 5:
           if (record->event.pressed) {
-            return MACRO( D(LSFT), T(B), U(LSFT),  T(L), T(O), T(O), T(M), T(B), T(E), T(R), T(G), END  ); // 
               SEND_STRING("Bloomberg");
           }
           break;
