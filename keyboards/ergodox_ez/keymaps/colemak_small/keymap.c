@@ -45,12 +45,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                               KC_HOME,
                                                KC_SPC, KC_BSPC,KC_END,
         // right hand
-             LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), M(4), M(5),            KC_MINS,
+             LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), M(4), M(5), M(7),
              RCTL(KC_RGHT),    KC_J,   KC_L,   KC_U,   KC_Y,   KC_SCLN,          KC_DELT,
                           KC_H,   LT(PMM_VIM, KC_N),   LT(PMM_WORDS, KC_E),   KC_I,   KC_O,   KC_LALT,
              KC_LGUI, KC_K,   KC_M,   KC_COMM,GUI_T(KC_DOT), CTL_T(KC_SLSH),   KC_RSFT,
                                   KC_DOWN,  KC_UP,KC_LBRC,KC_RBRC,          KC_FN1,
-             LALT(KC_GRV), KC_RALT,
+             LGUI(KC_GRV), LGUI(KC_TAB),
              KC_PGUP,
              KC_PGDN, LT(PMM_NAV, KC_TAB), LT(PMM_SYMB,KC_ENT)
     ),
@@ -291,8 +291,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [PMM_WORDS] = LAYOUT_ergodox(
        // left hand
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-       KC_TRNS,KC_TRNS,M(3),M(5),M(4),KC_TRNS,KC_TRNS,
-       KC_TRNS,M(6),M(7),M(8),M(9),KC_TRNS,
+       KC_TRNS,KC_TRNS,M(3),M(6),M(9),KC_TRNS,KC_TRNS,
+       KC_TRNS,M(8),M(5),M(4),M(7),KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                                        KC_TRNS,KC_TRNS,
