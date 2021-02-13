@@ -15,10 +15,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |explode | dull |bright|   `  |  up  | down | sound|           | undo |cut   | copy |paste | m(4) |  m(5)|  -
+ * |explode | dull |tmuxpa|   `  |  up  | down | sound|           | undo |cut   | copy |paste | m(4) |  m(5)|  -
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | caps   |   Q  |   W  |   F  |   P  |   G  | ctl  |           | ctl  |   J  |   L  |   U  |   Y  |   ;  |  del   |
- * |--------+------+------+------+------+------| left |           | rght |------+------+------+------+------+--------|
+ * | caps   |   Q  |   W  |   F  |   P  |   G  |ctlalt|           | ctlalt|  J  |   L  |   U  |   Y  |   ;  |  del   |
+ * |--------+------+------+------+------+------| up   |           | down |------+------+------+------+------+--------|
  * | LGUI    |   A  |  R   | S/BKT| T/NUM|   D  |------|           |------|   H  | N/VIM|   E  |   I  |O/SHFT|  lalt   |
  * |--------+------+------+------+------+------|LGui  |           | LGui |------+------+------+------+------+--------|
  * | Shift  |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |   ,  | ./hcmd |//Ctrl| RShift|
@@ -37,8 +37,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        LCTL(KC_UP),         DF(BASE_LINUX), KC_F2,   KC_GRV,   KC_VOLD,   KC_VOLU,   KC__MUTE,
-        KC_CAPS,        KC_Q,         KC_W,   KC_F,   KC_P,   KC_G,   LCTL(KC_LEFT),
+        LCTL(KC_UP),         DF(BASE_LINUX), M(12), KC_GRV,   KC_VOLD,   KC_VOLU,   KC__MUTE,
+        KC_CAPS,        KC_Q,         KC_W,   KC_F,   KC_P,   KC_G,   LCTL(LALT(KC_UP)),
         KC_LGUI,       KC_A,         KC_R,   LT(PMM_BRACKETS, KC_S),   LT(PMM_NUMBER, KC_T),   KC_D,
         KC_LSFT,        CTL_T(KC_Z),  GUI_T(KC_X),   KC_C,   KC_V,   KC_B,   KC_LGUI,
         KC_FN1,         KC_AT,      KC_PIPE,  KC_LEFT, KC_RGHT,
@@ -46,8 +46,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                               KC_HOME,
                                                KC_SPC, KC_BSPC,KC_END,
         // right hand
-             LGUI(KC_Z), LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), M(4), M(5), M(7),
-             RCTL(KC_RGHT),    KC_J,   KC_L,   KC_U,   KC_Y,   KC_SCLN,          KC_DELT,
+             LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), M(4), M(5), M(7),
+             LCTL(LALT(KC_DOWN)),    KC_J,   KC_L,   KC_U,   KC_Y,   KC_SCLN,          KC_DELT,
                           KC_H,   LT(PMM_VIM, KC_N),   LT(PMM_WORDS, KC_E),   KC_I,   KC_O,   KC_LALT,
              KC_LGUI, KC_K,   KC_M,   KC_COMM,GUI_T(KC_DOT), CTL_T(KC_SLSH),   KC_RSFT,
                                   KC_DOWN,  KC_UP,KC_LBRC,KC_RBRC,          KC_FN1,
@@ -410,6 +410,11 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         case 9:
           if (record->event.pressed) {
               SEND_STRING("pmcloughlin2@Bloomberg.net");
+          }
+          break;
+        case 12:
+          if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_DELAY(250) ":paste-buffer" SS_TAP(X_ENT));
           }
           break;
       }
